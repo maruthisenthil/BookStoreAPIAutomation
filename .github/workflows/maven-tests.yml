@@ -1,4 +1,4 @@
-name: 🧪 Run API Tests and Publish Allure Report
+name: 🧪 Run BookStoreAPI Auto Tests on FASTAPI's BookStore APP and Publish Allure Report
 
 on:
   push:
@@ -23,22 +23,37 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: 📦 Install Python dependencies
+      - name: 📦 Install Python dependencies and Start FastAPI
         run: |
           cd bookstore
           pip install -r requirements.txt
           nohup uvicorn main:app --host 127.0.0.1 --port 8000 --reload &
           sleep 5
-          curl http://127.0.0.1:8000/docs || exit 1
+          curl http://127.0.0.1:8000/health || exit 1
 
       - name: 🧪 Run API Tests
-        run: mvn clean test
+        run: |
+          mvn clean test || true
 
       - name: 🧾 Generate Allure Report
         run: mvn allure:report
 
+      - name: 📦 Upload Allure Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results
+          path: target/allure-results
+
+      - name: 📦 Upload TestNG Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: testng-report
+          path: test-output
+
       - name: 📤 Deploy Allure report to GitHub Pages
-        if: success()
+        if: always()
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

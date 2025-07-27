@@ -33,9 +33,11 @@ jobs:
 
       - name: 🧪 Run API Tests
         run: |
+          mkdir -p target/allure-results
           mvn clean test || true
 
       - name: 🧾 Generate Allure Report
+        if: always()
         run: mvn allure:report
 
       - name: 📦 Upload Allure Results

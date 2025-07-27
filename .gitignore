@@ -2,6 +2,7 @@ allure-results/
 test-output/
 build/
 config/config.properties
+src/test/resources/config/config.properties
 .allure/
 allure-report/
 *.log

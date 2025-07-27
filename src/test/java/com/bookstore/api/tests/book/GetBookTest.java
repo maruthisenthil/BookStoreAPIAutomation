@@ -104,7 +104,7 @@ public class GetBookTest extends BaseTest{
 	@Test(priority=2, groups="negative")
 	public void getBookAlphaNumericTest() {
 
-		String bookid="123abc";
+		String bookid="abe123abc";
 		Response responseGet = restClient.get(BASE_URL_BOOKSTORE, BOOKSTORE_BOOKS_ENDPOINT+bookid, null, null, AuthType.BEARER_TOKEN, ContentType.JSON);
 		
  		Assert.assertEquals(responseGet.getHeader("Content-Type"), "application/json");

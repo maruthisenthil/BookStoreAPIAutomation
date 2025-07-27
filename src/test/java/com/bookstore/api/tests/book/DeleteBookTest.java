@@ -73,7 +73,7 @@ public class DeleteBookTest extends BaseTest{
 	
 	@Test(priority =2, groups="negative")
 	public void deleteBookInvalidAlphaNumericTest() {
-			String bookId = "asd123";
+			String bookId = "asd123abc";
 
 			Response responseDelete = restClient.delete(BASE_URL_BOOKSTORE, BOOKSTORE_BOOKS_ENDPOINT+bookId, null, null, AuthType.BEARER_TOKEN, ContentType.JSON);
 			Assert.assertEquals(responseDelete.getHeader("Content-Type"), "application/json");

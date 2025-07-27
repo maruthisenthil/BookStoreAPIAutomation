@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="Parallel Bookstore API Suite" parallel="classes" thread-count="4">
+
+<!-- Parallel Book Feature Tests -->
+  <test name="Book API - Parallel CRUD Tests">
+    <classes>
+      <class name="com.bookstore.api.tests.book.CreateBookTest"/>
+      <class name="com.bookstore.api.tests.book.GetBookTest"/>
+      <class name="com.bookstore.api.tests.book.UpdateBookTest"/>
+      <class name="com.bookstore.api.tests.book.DeleteBookTest"/>
+    </classes>
+  </test>
+
+  <!-- Parallel User Feature Tests -->
+  <test name="User API - Parallel Auth Tests">
+    <classes>
+      <class name="com.bookstore.api.tests.user.CreateUserTest"/>
+      <class name="com.bookstore.api.tests.user.LoginUserTest"/>
+    </classes>
+  </test>
+
+  <!-- Optional Schema Validation in Parallel -->
+  <test name="Schema Validation Tests">
+    <classes>
+      <class name="com.bookstore.api.tests.schema.BookSchemaTest"/>
+    </classes>
+  </test>
+  
+  	<test name="BookStore API Health Check">
+		<classes>
+			<class name="ccom.bookstore.api.health.tests.HelathCheckTest" />
+		</classes>
+	</test>
+  
+
+</suite>

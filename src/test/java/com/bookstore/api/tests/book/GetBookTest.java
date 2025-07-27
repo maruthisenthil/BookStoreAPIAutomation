@@ -108,7 +108,7 @@ public class GetBookTest extends BaseTest{
 		Response responseGet = restClient.get(BASE_URL_BOOKSTORE, BOOKSTORE_BOOKS_ENDPOINT+bookid, null, null, AuthType.BEARER_TOKEN, ContentType.JSON);
 		
  		Assert.assertEquals(responseGet.getHeader("Content-Type"), "application/json");
-		Assert.assertTrue(responseGet.statusLine().contains("Unprocessable Content"));
+		Assert.assertTrue(responseGet.statusLine().contains("Unprocessable Entity"));
 		Assert.assertEquals(responseGet.getStatusCode(), 422);
 		
 		Assert.assertTrue(responseGet.jsonPath().getString("detail[0].msg")

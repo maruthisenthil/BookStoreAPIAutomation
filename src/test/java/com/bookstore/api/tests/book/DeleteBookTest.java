@@ -77,7 +77,7 @@ public class DeleteBookTest extends BaseTest{
 
 			Response responseDelete = restClient.delete(BASE_URL_BOOKSTORE, BOOKSTORE_BOOKS_ENDPOINT+bookId, null, null, AuthType.BEARER_TOKEN, ContentType.JSON);
 			Assert.assertEquals(responseDelete.getHeader("Content-Type"), "application/json");
-			Assert.assertTrue(responseDelete.statusLine().contains("Unprocessable Content"));
+			Assert.assertTrue(responseDelete.statusLine().contains("Unprocessable Entity"));
 				
 			Assert.assertTrue(responseDelete.jsonPath().getString("detail[0].msg")
 				    .contains("Input should be a valid integer"));

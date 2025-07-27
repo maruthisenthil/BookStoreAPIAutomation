@@ -32,7 +32,7 @@ public class LoginUserTest extends BaseTest{
 	@Test(priority =2, groups="negative")
 	public void loginUserInvalidUserTest() {
 		
-		User user= UserTestDataFactory.createValidUser();
+		User user= UserTestDataFactory.createValidNewUser();
 		
 		Response responsePost = restClient.post(BASE_URL_BOOKSTORE, BOOKSTORE_LOGIN_ENDPOINT, 
 				user, null, null, AuthType.NO_AUTH, ContentType.JSON);

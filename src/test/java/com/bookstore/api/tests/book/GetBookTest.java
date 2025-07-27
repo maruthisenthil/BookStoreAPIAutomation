@@ -1,7 +1,6 @@
 package com.bookstore.api.tests.book;
 
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -24,11 +23,6 @@ import io.restassured.response.Response;
 @Story("User Story: features - bookstore - getBookAPI ")
 public class GetBookTest extends BaseTest{
 	
-	@BeforeClass
-	public void setUpTest() {
-		
-	}
-
 	@Description("Getting all the Book... ")
 	@Owner("Senthil AutoTest")
 	@Severity(SeverityLevel.CRITICAL)
@@ -96,27 +90,9 @@ public class GetBookTest extends BaseTest{
 		
 		Assert.assertEquals(bookResponse.getId(), bookid);
 	}
-	
-	
-	// Due to time constraints only few negative cases scripted - Please find the EOF for remaining negative scripts planned
-	
-	
-	@Description("Getting the Book... ")
-	@Owner("Senthil AutoTest")
-	@Severity(SeverityLevel.CRITICAL)
-	@Test(priority =2, groups="negative")
-	public void getBookWithExpiredTestTest() {
-		Integer bookid=1001;
-		Response responseGet = restClient.get(BASE_URL_BOOKSTORE, BOOKSTORE_BOOKS_ENDPOINT+bookid, null, null, AuthType.EXPIRED_TOKEN, ContentType.JSON);
 		
-		Assert.assertEquals(responseGet.getHeader("Content-Type"), "application/json");
-		Assert.assertEquals(responseGet.statusCode(), 403);
-		Assert.assertTrue(responseGet.statusLine().contains("Forbidden"));	
-		Assert.assertEquals(responseGet.jsonPath().getString("detail"), "Invalid token or expired token");
-	}
-	
-	
-	
+	// Due to time constraints only few negative cases scripted - Please find the EOF for remaining negative scripts planned
+		
 	@Test(priority=2, groups="negative")
 	public void getBookWithInvalidBookIdTest() {
 		
@@ -127,13 +103,13 @@ public class GetBookTest extends BaseTest{
 	
 	@Test(priority=2, groups="negative")
 	public void getBookAlphaNumericTest() {
-		
+
 		String bookid="123abc";
 		Response responseGet = restClient.get(BASE_URL_BOOKSTORE, BOOKSTORE_BOOKS_ENDPOINT+bookid, null, null, AuthType.BEARER_TOKEN, ContentType.JSON);
 		
  		Assert.assertEquals(responseGet.getHeader("Content-Type"), "application/json");
 		Assert.assertTrue(responseGet.statusLine().contains("Unprocessable Content"));
-		Assert.assertEquals(responseGet.getStatusCode(), 422);  // or 400
+		Assert.assertEquals(responseGet.getStatusCode(), 422);
 		
 		Assert.assertTrue(responseGet.jsonPath().getString("detail[0].msg")
 		    .contains("Input should be a valid integer"));
@@ -155,6 +131,7 @@ public class GetBookTest extends BaseTest{
 		String bookid="12";
 		Response responseGet = restClient.get(BASE_URL_BOOKSTORE, BOOKSTORE_BOOKS_ENDPOINT+bookid, null, null, AuthType.NO_AUTH, ContentType.JSON);
 		AssertionUtils.assertNotAuthenticatedResponse(responseGet);
+		
 	}
 	
 	

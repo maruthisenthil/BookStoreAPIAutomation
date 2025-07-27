@@ -1,0 +1,34 @@
+<div>POST to http://127.0.0.1:8000/books/</div>
+
+    <h4>Body</h4>
+    <div>
+    <pre class="preformated-text">
+{
+    &quot;id&quot;: 1002,
+    &quot;name&quot;: &quot;Harper Lee&quot;,
+    &quot;author&quot;: &quot;To Kill a Mockingbird&quot;,
+    &quot;published_year&quot;: 1960,
+    &quot;book_summary&quot;: &quot;A profound story exploring racial injustice and childhood innocence in the American South.&quot;
+}    </pre>
+    </div>
+
+    <h4>Headers</h4>
+    <div>
+            <div>Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZW50aGlsYkBnbWFpbC5jb20iLCJleHAiOjE3NTM0OTUyNTB9.VE6uzG_2jorvkp7Zlkmz7Rit5tq5L_qIotq_vdeNYdo</div>
+            <div>Accept: application/json, application/javascript, text/javascript, text/json</div>
+            <div>Content-Type: application/json</div>
+    </div>
+
+
+
+    <h4>Curl</h4>
+    <div>
+        curl -v -X POST &#39;http://127.0.0.1:8000/books/&#39; -H &#39;Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZW50aGlsYkBnbWFpbC5jb20iLCJleHAiOjE3NTM0OTUyNTB9.VE6uzG_2jorvkp7Zlkmz7Rit5tq5L_qIotq_vdeNYdo&#39; -H &#39;Accept: application/json, application/javascript, text/javascript, text/json&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;id&quot;: 1002,
+    &quot;name&quot;: &quot;Harper Lee&quot;,
+    &quot;author&quot;: &quot;To Kill a Mockingbird&quot;,
+    &quot;published_year&quot;: 1960,
+    &quot;book_summary&quot;: &quot;A profound story exploring racial injustice and childhood innocence in the American South.&quot;
+}&#39;
+    </div>
+

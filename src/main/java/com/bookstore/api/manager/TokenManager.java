@@ -31,7 +31,7 @@ public class TokenManager {
         }
 
         String token = response.jsonPath().getString("access_token");
-        System.out.println("Refreshed Token Value: " + token);
+//        System.out.println("Refreshed Token Value: " + token);
         return token;
     }
     

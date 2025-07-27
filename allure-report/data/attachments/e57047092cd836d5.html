@@ -1,0 +1,34 @@
+<div>POST to http://127.0.0.1:8000/books/</div>
+
+    <h4>Body</h4>
+    <div>
+    <pre class="preformated-text">
+{
+    &quot;id&quot;: 1003,
+    &quot;name&quot;: &quot;J.K. Rowling&quot;,
+    &quot;author&quot;: &quot;Harry Potter and the Sorcerer&#39;s Stone&quot;,
+    &quot;published_year&quot;: 1997,
+    &quot;book_summary&quot;: &quot;A young wizard discovers his magical heritage and begins his journey at Hogwarts School.&quot;
+}    </pre>
+    </div>
+
+    <h4>Headers</h4>
+    <div>
+            <div>Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZW50aGlsYkBnbWFpbC5jb20iLCJleHAiOjE3NTM0OTUyMzZ9.9E40TxtDQJhZ55hGOouX8hDeEQkIi7Bm6PEKIB21eZw</div>
+            <div>Accept: application/json, application/javascript, text/javascript, text/json</div>
+            <div>Content-Type: application/json</div>
+    </div>
+
+
+
+    <h4>Curl</h4>
+    <div>
+        curl -v -X POST &#39;http://127.0.0.1:8000/books/&#39; -H &#39;Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZW50aGlsYkBnbWFpbC5jb20iLCJleHAiOjE3NTM0OTUyMzZ9.9E40TxtDQJhZ55hGOouX8hDeEQkIi7Bm6PEKIB21eZw&#39; -H &#39;Accept: application/json, application/javascript, text/javascript, text/json&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;id&quot;: 1003,
+    &quot;name&quot;: &quot;J.K. Rowling&quot;,
+    &quot;author&quot;: &quot;Harry Potter and the Sorcerer&#39;s Stone&quot;,
+    &quot;published_year&quot;: 1997,
+    &quot;book_summary&quot;: &quot;A young wizard discovers his magical heritage and begins his journey at Hogwarts School.&quot;
+}&#39;
+    </div>
+

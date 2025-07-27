@@ -20,7 +20,10 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
-@Listeners(ChainTestListener.class)
+//@Listeners(ChainTestListener.class)
+//@Listeners(com.bookstore.api.listeners.CustomTestLogger.class)
+//@Listeners({io.qameta.allure.testng.AllureTestNg.class})
+@Listeners({io.qameta.allure.testng.AllureTestNg.class, com.bookstore.api.listeners.CustomTestLogger.class})
 public class BaseTest {
 
 	protected RestClient restClient;
@@ -38,6 +41,7 @@ public class BaseTest {
 		
 	@BeforeSuite
 	public void setUpAllureReport() {
+
 		RestAssured.filters(new AllureRestAssured());
 	}
 	
@@ -62,7 +66,7 @@ public class BaseTest {
 	@BeforeMethod
 	public void setUpTokenPerMethod() {
 
-		 if(!isParallelMode) {
+		 if(isParallelMode) {
 			 ChainTestListener.log("====================BaseMethod:setUp()====================");
 			 restClient = new RestClient();
 			doLogin();
@@ -72,7 +76,7 @@ public class BaseTest {
 	protected void doLogin() {
 		System.out.println("<-----Do Login First----->");
 		Response response = restClient.post(BASE_URL_BOOKSTORE, BOOKSTORE_LOGIN_ENDPOINT, 
-				TokenManager.getLoginCredentials(), null, null, AuthType.NONE, ContentType.JSON);
+		TokenManager.getLoginCredentials(), null, null, AuthType.NONE, ContentType.JSON);
 		ConfigManagerOne.set("bookstore_bearertoken", response.jsonPath().getString("access_token"));
 	}
 

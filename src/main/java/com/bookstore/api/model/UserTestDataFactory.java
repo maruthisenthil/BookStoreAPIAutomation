@@ -8,7 +8,7 @@ public class UserTestDataFactory {
 
     public static User createValidUser() {
         int id = ThreadLocalRandom.current().nextInt(100, 999);
-        String email = "testuser" + id + "@asd.com";
+        String email = "testuser" + id + "@positive.com";
         String password = "Test123";
 
         return User.builder()
@@ -17,6 +17,17 @@ public class UserTestDataFactory {
                 .build();
     }
 
+    public static User createValidNewUser() {
+        int id = ThreadLocalRandom.current().nextInt(100, 999);
+        String email = "testuser" + id + "@more.com";
+        String password = "Test123";
+
+        return User.builder()
+                .email(email)
+                .password(password)
+                .build();
+    }
+    
     public static User createInvalidUser() {
         return User.builder()
                 .email("") // Empty email

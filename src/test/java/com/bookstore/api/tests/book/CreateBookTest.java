@@ -10,12 +10,16 @@ import com.bookstore.api.pojo.Book;
 import com.bookstore.api.utils.AssertionUtils;
 
 import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
+@Epic("EPIC 102: BookStore CreateBookTest Feature ")
+@Story("User Story: features - bookstore - createBookAPI ")
 public class CreateBookTest extends BaseTest {
 
 	@Description("CreateBook the Book... ")

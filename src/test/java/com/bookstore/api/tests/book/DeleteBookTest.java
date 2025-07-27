@@ -9,9 +9,13 @@ import com.bookstore.api.model.BookTestDataFactory;
 import com.bookstore.api.pojo.Book;
 import com.bookstore.api.utils.AssertionUtils;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Story;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
+@Epic("EPIC 103: BookStore GetBookTest Feature ")
+@Story("User Story: features - bookstore - deleteBookAPI ")
 public class DeleteBookTest extends BaseTest{
 	
 	@Test(priority =1, groups="positive")
@@ -26,7 +30,6 @@ public class DeleteBookTest extends BaseTest{
 			Assert.assertEquals(responsePost.getHeader("Content-Type"), "application/json");
 			Assert.assertEquals(bookResponsePost.getName(), book.getName());
 			Assert.assertNotNull(bookResponsePost.getId());
-			
 			
 			// fetch bookId:
 			Integer bookId = bookResponsePost.getId();

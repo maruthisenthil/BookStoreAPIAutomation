@@ -8,9 +8,13 @@ import com.bookstore.api.model.BookTestDataFactory;
 import com.bookstore.api.pojo.Book;
 import com.bookstore.api.utils.AssertionUtils;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Story;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
+@Epic("EPIC 101: BookStore UpdateBookTest Feature ")
+@Story("User Story: features - bookstore - updateBookAPI ")
 public class UpdateBookTest extends BaseTest {
 
 	@Test(priority =1, groups="positive")
